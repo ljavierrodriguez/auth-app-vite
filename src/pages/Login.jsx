@@ -41,7 +41,7 @@ const Login = () => {
         <form onSubmit={handleSubmitLogin} className="w-100 p-3">
             <div className="form-group mb-3">
                 <label htmlFor="email" className="form-label">Email</label>
-                <input type="email" name="email" id="email" className="form-control" placeholder='jhon.doe@gmail.com' value={email} onChange={e => setEmail(e.target.value)} />
+                <input type="email" name="email" id="email" className="form-control" placeholder='john.doe@gmail.com' value={email} onChange={e => setEmail(e.target.value)} />
             </div>
             <div className="form-group mb-3">
                 <label htmlFor="password" className="form-label">Password</label>
