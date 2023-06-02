@@ -51,6 +51,7 @@ const Login = () => {
                 <button className="btn btn-primary btn-sm gap-2">Login</button>
             </div>
         </form>
+        <small>{process.env.DBUSER}</small>
     </div>
   )
 }
