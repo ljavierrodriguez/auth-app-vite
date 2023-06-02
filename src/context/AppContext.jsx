@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 
 export const Context = createContext(null);
@@ -22,6 +22,10 @@ const injectContext = Component => {
                     email: credentials?.email,
                     token: process.env.TOKEN_BSALE
                 })
+                sessionStorage.setItem('user', JSON.stringify({
+                    email: credentials?.email,
+                    token: process.env.TOKEN_BSALE
+                }))
                 return true
             } else {
                 setUser(null)
@@ -31,6 +35,7 @@ const injectContext = Component => {
 
         const logout = () => {
             setUser(null);
+            sessionStorage.removeItem('user')
         }
 
         const data = {
@@ -42,6 +47,17 @@ const injectContext = Component => {
                 logout
             }
         }
+
+        const checkUser = () => {
+            if(sessionStorage.getItem('user')){
+                setUser(JSON.parse(sessionStorage.getItem('user'))) 
+            }
+        }
+
+
+        useEffect(() => {
+            checkUser();
+        }, [])
 
 
         return (
