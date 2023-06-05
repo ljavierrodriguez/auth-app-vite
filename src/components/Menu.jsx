@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from '../context/AppContext'
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   const { store, actions } = useContext(Context);
@@ -24,7 +25,8 @@ const Menu = () => {
                 {store?.user?.email}
               </a>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Profile</a></li>
+                <li><Link className="dropdown-item" to="/Profile">Profile</Link></li>
+                <li><Link className="dropdown-item" to="/prueba/1">Prueba</Link></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><button className="dropdown-item" onClick={actions.logout}>Salir</button></li>
               </ul>

@@ -13,6 +13,7 @@ const Layout = () => {
             <BrowserRouter>
                 {!!store.user && <Menu />}
                 <Routes>
+                    <Route path="/prueba/:id" element={<Profile />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/profile" element={
                         <ProtectedRoute user={store.user}>
