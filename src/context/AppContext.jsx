@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+import auth from '../services';
 
 
 export const Context = createContext(null);
@@ -15,6 +16,28 @@ const injectContext = Component => {
         ])
 
         const login = (credentials) => {
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(credentials),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const url = `${process.env.API_URL}/auth/login`;
+            const responseLogin = auth.login(url, options);
+
+            responseLogin.then((data) => {
+                //console.log(data);
+                if(data.status === 200){
+                    data.token = process.env.TOKEN_BSALE;
+                    setUser(data)
+                    sessionStorage.setItem('user', JSON.stringify(data))
+                }
+            })
+
+        }
+
+        /* const login = (credentials) => {
             const foundUser = users.find((user) => user.email === credentials.email);
             if (!foundUser) return false;
             if (credentials?.password === foundUser.password) {
@@ -31,7 +54,7 @@ const injectContext = Component => {
                 setUser(null)
                 return false
             }
-        }
+        } */
 
         const logout = () => {
             setUser(null);

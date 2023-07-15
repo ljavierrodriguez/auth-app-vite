@@ -14,8 +14,8 @@ const Login = () => {
         evento.preventDefault();
 
         const credentials = {
-            email,
-            password
+            username: email,
+            password: password
         }
 
         const result = actions.login(credentials);
@@ -55,7 +55,7 @@ const Login = () => {
                     <button className="btn btn-primary btn-sm gap-2">Login</button>
                 </div>
             </form>
-            <small>{process.env.DBUSER}</small>
+            {/* <small>{process.env.DBUSER}</small> */}
         </div>
     )
 }
